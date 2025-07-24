@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced To-Do List App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>To-Do List</h1>
+    <button id="theme-toggle" aria-label="Toggle dark/light mode">🌙</button>
+  </header>
+  <main>
+    <section id="task-form-section">
+      <form id="task-form">
+        <input type="text" id="task-title" placeholder="Task Title" required>
+        <textarea id="task-desc" placeholder="Description"></textarea>
+        <input type="date" id="task-due-date">
+        <select id="task-priority">
+          <option value="High">High</option>
+          <option value="Medium" selected>Medium</option>
+          <option value="Low">Low</option>
+        </select>
+        <input type="text" id="task-tags" placeholder="Tags (comma separated)">
+        <button type="submit">Add Task</button>
+      </form>
+    </section>
+    <section id="filters-section">
+      <input type="text" id="search-input" placeholder="Search tasks...">
+      <select id="filter-status">
+        <option value="all">All</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+      </select>
+      <select id="filter-priority">
+        <option value="all">All Priorities</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <select id="filter-category">
+        <option value="all">All Categories</option>
+        <!-- Categories will be dynamically populated -->
+      </select>
+      <button id="export-btn">Export</button>
+      <input type="file" id="import-input" style="display:none;">
+      <button id="import-btn">Import</button>
+    </section>
+    <section id="progress-section">
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
+      <span id="progress-text">0 of 0 tasks completed</span>
+    </section>
+    <section id="tasks-section">
+      <ul id="task-list">
+        <!-- Tasks will be rendered here -->
+      </ul>
+      <div id="empty-message">No tasks yet. Add your first task!</div>
+    </section>
+  </main>
+  <div id="edit-modal" class="modal hidden">
+    <!-- Edit form will be rendered here -->
+  </div>
+  <script src="app.js"></script>
+</body>
+</html> 

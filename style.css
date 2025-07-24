@@ -1,0 +1,287 @@
+:root {
+  --primary-bg: linear-gradient(135deg, #e0e7ff 0%, #f9fafb 100%);
+  --primary-text: #222;
+  --accent: #4f8cff;
+  --card-bg: rgba(255,255,255,0.7);
+  --border: #e0e0e0;
+  --completed: #b2f2bb;
+  --high: #ff6b6b;
+  --medium: #ffd166;
+  --low: #6bcBef;
+  --glass-blur: 16px;
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+}
+body.dark {
+  --primary-bg: linear-gradient(135deg, #232526 0%, #414345 100%);
+  --primary-text: #f1f1f1;
+  --card-bg: rgba(35,39,42,0.7);
+  --border: #333;
+  --glass-shadow: 0 8px 32px 0 rgba(0,0,0,0.45);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: var(--primary-bg);
+  color: var(--primary-text);
+  min-height: 100vh;
+  transition: background 0.5s, color 0.3s;
+  background-attachment: fixed;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(var(--glass-blur));
+  box-shadow: var(--glass-shadow);
+}
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+main {
+  max-width: 700px;
+  margin: 2.5rem auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 24px;
+  box-shadow: var(--glass-shadow);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1.5px solid rgba(255,255,255,0.18);
+}
+#task-form-section form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: var(--card-bg);
+  padding: 1rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+}
+#task-form input,
+#task-form textarea,
+#task-form select,
+#task-form button {
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.5);
+  transition: box-shadow 0.2s, border 0.2s;
+}
+body.dark #task-form input,
+body.dark #task-form textarea,
+body.dark #task-form select,
+body.dark #task-form button {
+  background: rgba(35,39,42,0.5);
+}
+#task-form input:focus,
+#task-form textarea:focus,
+#task-form select:focus {
+  outline: none;
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 0 0 2px #4f8cff33;
+}
+#task-form textarea {
+  flex: 1 1 100%;
+  min-height: 40px;
+  resize: vertical;
+}
+#task-form button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px #4f8cff22;
+}
+#task-form button:hover {
+  background: #2563eb;
+  box-shadow: 0 4px 16px #4f8cff33;
+}
+#filters-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+}
+#filters-section input,
+#filters-section select,
+#filters-section button {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  font-size: 1rem;
+  background: rgba(255,255,255,0.5);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+body.dark #filters-section input,
+body.dark #filters-section select,
+body.dark #filters-section button {
+  background: rgba(35,39,42,0.5);
+}
+#filters-section input:focus,
+#filters-section select:focus {
+  outline: none;
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 0 0 2px #4f8cff33;
+}
+#progress-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+#progress-bar-container {
+  flex: 1;
+  background: var(--border);
+  border-radius: 6px;
+  height: 12px;
+  overflow: hidden;
+}
+#progress-bar {
+  height: 100%;
+  background: var(--accent);
+  width: 0%;
+  transition: width 0.4s;
+  border-radius: 6px;
+}
+#tasks-section {
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  padding: 1rem;
+  min-height: 200px;
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--border);
+}
+#task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.task-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.7rem 1rem;
+  transition: box-shadow 0.2s, background 0.3s, border 0.2s;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+  position: relative;
+  animation: fadeIn 0.4s;
+  backdrop-filter: blur(var(--glass-blur));
+}
+.task-item:hover {
+  border: 1.5px solid var(--accent);
+  box-shadow: 0 4px 16px #4f8cff22;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.task-item.completed {
+  background: var(--completed);
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+.task-meta {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+.task-priority.High { color: var(--high); }
+.task-priority.Medium { color: var(--medium); }
+.task-priority.Low { color: var(--low); }
+.task-tags {
+  background: var(--border);
+  border-radius: 3px;
+  padding: 0 0.4em;
+  margin-left: 0.3em;
+  font-size: 0.9em;
+}
+.task-actions {
+  display: flex;
+  gap: 0.3rem;
+}
+.task-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+  color: var(--accent);
+  transition: color 0.2s;
+  border-radius: 50%;
+  padding: 0.3em 0.5em;
+}
+.task-actions button:hover {
+  color: #2563eb;
+  background: #e0e7ff55;
+}
+#empty-message {
+  text-align: center;
+  color: #888;
+  margin-top: 2rem;
+  font-size: 1.1rem;
+}
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s;
+}
+.modal.hidden {
+  display: none;
+}
+@media (max-width: 600px) {
+  main {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 12px;
+  }
+  #task-form-section form {
+    flex-direction: column;
+    gap: 0.7rem;
+    border-radius: 10px;
+  }
+  #filters-section {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: stretch;
+    border-radius: 8px;
+  }
+  #tasks-section {
+    padding: 0.5rem;
+    border-radius: 10px;
+  }
+  .task-item {
+    border-radius: 8px;
+  }
+}
